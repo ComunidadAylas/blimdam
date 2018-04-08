@@ -17,9 +17,9 @@ bot.on('ready', () => {
         // Ver si hemos recibido un evento en un canal que nos interese
         if (message.channel.type === "text" && canalesLimpieza.indexOf(message.channel.name) > -1) {
 
-            if (!message.channel.permissionsFor(bot.user).hasPermission("MANAGE_MESSAGES")) {
+            if (!message.channel.permissionsFor(bot.user).has("MANAGE_MESSAGES")) {
                 // Si el bot no tiene permisos adecuados para hacer nada, avisar si es posible
-                if (message.channel.permissionsFor(bot.user).hasPermission("SEND_MESSAGES")) {
+                if (message.channel.permissionsFor(bot.user).has("SEND_MESSAGES")) {
                     message.channel.sendMessage("❌ No tengo los permisos necesarios para limpiar este canal.");
                 }
 
@@ -27,7 +27,7 @@ bot.on('ready', () => {
                 // Procesar comando para limpiar el canal de mensajes
                 
                 // Avisar al usuario de la operación
-                if (message.channel.permissionsFor(bot.user).hasPermission("SEND_MESSAGES")) {
+                if (message.channel.permissionsFor(bot.user).has("SEND_MESSAGES")) {
                     message.channel.sendMessage("✅ Se irán borrando los mensajes no fijados poco a poco. Ejecuta este comando varias veces si no se borran todos.");
                 }
                 
@@ -38,7 +38,7 @@ bot.on('ready', () => {
                     messages.array().forEach(msg => {
                         if (!msg.pinned) {
                             msg.delete(retardoInicial ? 10000 : 4000).catch(err => {
-                                if (message.channel.permissionsFor(bot.user).hasPermission("SEND_MESSAGES")) {
+                                if (message.channel.permissionsFor(bot.user).has("SEND_MESSAGES")) {
                                     message.channel.sendMessage("❌ Ha ocurrido un error borrando un mensaje. ¡<@85378939890962432>, investiga esto!");
                                 }
                                 console.log(err);
@@ -48,7 +48,7 @@ bot.on('ready', () => {
                     });
                 })
                 .catch(err => {
-                    if (message.channel.permissionsFor(bot.user).hasPermission("SEND_MESSAGES")) {
+                    if (message.channel.permissionsFor(bot.user).has("SEND_MESSAGES")) {
                         message.channel.sendMessage("❌ Ha ocurrido un error al obtener los mensajes del canal. ¡<@85378939890962432>, haz algo!");
                     }
                     console.log(err);
