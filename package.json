@@ -1,0 +1,20 @@
+{
+  "name": "Limpiador mensajes Aylas (Discord)",
+  "version": "1.0.0",
+  "description": "Un bot sencillo para eliminar mensajes no fijados publicados en canales de Discord automáticamente, o a petición de un moderador por comando.",
+  "engines": {
+    "node": "6.7.0"
+  },
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "discord.js": "11.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ComunidadAylas/limpiador-mensajes-aylas-disc"
+  },
+  "license": "GPL-3.0"
+}
