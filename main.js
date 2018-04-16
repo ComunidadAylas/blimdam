@@ -5,7 +5,7 @@ const bot = new Discord.Client();
  * Opciones configurables *
  *                        */
 const comandoLimpiar = "!limpiar";
-const canalesLimpieza = [ "comandostrax" ];
+const canalesLimpieza = [ "comandos-trax" ];
 const tiempoEsperaBorrado = 20000; // En ms
 
 let mensajesLimpiarAuto = {};
