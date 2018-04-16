@@ -20,7 +20,7 @@ bot.on('ready', () => {
             if (!message.channel.permissionsFor(bot.user).has("MANAGE_MESSAGES")) {
                 // Si el bot no tiene permisos adecuados para hacer nada, avisar si es posible
                 if (message.channel.permissionsFor(bot.user).has("SEND_MESSAGES")) {
-                    message.channel.sendMessage("❌ No tengo los permisos necesarios para limpiar este canal.");
+                    message.channel.send("❌ No tengo los permisos necesarios para limpiar este canal.");
                 }
 
             } else if (message.content === comandoLimpiar) {
@@ -28,7 +28,7 @@ bot.on('ready', () => {
                 
                 // Avisar al usuario de la operación
                 if (message.channel.permissionsFor(bot.user).has("SEND_MESSAGES")) {
-                    message.channel.sendMessage("✅ Se irán borrando los mensajes no fijados poco a poco. Ejecuta este comando varias veces si no se borran todos.");
+                    message.channel.send("✅ Se irán borrando los mensajes no fijados poco a poco. Ejecuta este comando varias veces si no se borran todos.");
                 }
                 
                 let retardoInicial = true;
@@ -39,7 +39,7 @@ bot.on('ready', () => {
                         if (!msg.pinned) {
                             msg.delete(retardoInicial ? 10000 : 4000).catch(err => {
                                 if (message.channel.permissionsFor(bot.user).has("SEND_MESSAGES")) {
-                                    message.channel.sendMessage("❌ Ha ocurrido un error borrando un mensaje. ¡<@85378939890962432>, investiga esto!");
+                                    message.channel.send("❌ Ha ocurrido un error borrando un mensaje. ¡<@85378939890962432>, investiga esto!");
                                 }
                                 console.log(err);
                             });
@@ -49,7 +49,7 @@ bot.on('ready', () => {
                 })
                 .catch(err => {
                     if (message.channel.permissionsFor(bot.user).has("SEND_MESSAGES")) {
-                        message.channel.sendMessage("❌ Ha ocurrido un error al obtener los mensajes del canal. ¡<@85378939890962432>, haz algo!");
+                        message.channel.send("❌ Ha ocurrido un error al obtener los mensajes del canal. ¡<@85378939890962432>, haz algo!");
                     }
                     console.log(err);
                 });
