@@ -5,7 +5,6 @@ const bot = new Discord.Client();
  * Opciones configurables *
  *                        */
 const comandoLimpiar = "!limpiar";
-const canalesLimpieza = [ "comandos-trax" ];
 const tiempoEsperaBorrado = 20000; // En ms
 
 let mensajesLimpiarAuto = {};
@@ -15,7 +14,7 @@ bot.on('ready', () => {
     
     bot.on('message', (message) => {
         // Ver si hemos recibido un evento en un canal que nos interese
-        if (message.channel.type === "text" && canalesLimpieza.indexOf(message.channel.name) > -1) {
+        if (message.channel.type === "text" && message.channel.permissionsFor(bot.user).has("VIEW_CHANNEL")) {
 
             if (!message.channel.permissionsFor(bot.user).has("MANAGE_MESSAGES")) {
                 // Si el bot no tiene permisos adecuados para hacer nada, avisar si es posible
@@ -65,7 +64,7 @@ bot.on('ready', () => {
     });
 
     bot.on('channelPinsUpdate', (channel, time) => {
-        if (channel.type === "text" && canalesLimpieza.indexOf(channel.name) > -1) {
+        if (channel.type === "text" && channel.permissionsFor(bot.user).has("VIEW_CHANNEL")) {
 
             // Obtener mensajes fijados debería de ser más eficiente que mensajes enviados para Aylas
             channel.fetchPinnedMessages()
