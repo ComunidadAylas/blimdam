@@ -71,7 +71,7 @@ bot.once(Events.ClientReady, () => {
             // Mensaje normal (comando, etc.) en canal que controla este bot, borrar tras un tiempo
             mensajesLimpiarAuto[message.id] = setTimeout(() => {
                 // Usamos message.delete() en vez de channel.bulkDelete() porque parece tener un funcionamiento más estable
-                message.delete();
+                message.delete().catch(() => {});
                 mensajesLimpiarAuto[message.id] = undefined;
             }, tiempoEsperaBorrado);
         }
