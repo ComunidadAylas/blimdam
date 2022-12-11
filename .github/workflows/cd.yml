@@ -11,6 +11,7 @@ jobs:
   despliegue:
     name: Desplegar bot
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Clonar repositorio
         uses: actions/checkout@v3
