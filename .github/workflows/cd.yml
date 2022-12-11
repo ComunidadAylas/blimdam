@@ -1,0 +1,20 @@
+name: Despliegue continuo
+on:
+  push:
+    branches:
+      - master
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+jobs:
+  despliegue:
+    name: Desplegar bot
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+      - name: Instalar flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Lanzar despliegue
+        run: flyctl deploy --remote-only
