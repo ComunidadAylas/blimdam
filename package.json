@@ -2,6 +2,9 @@
   "name": "blimdam",
   "version": "1.0.2",
   "description": "Un bot sencillo para eliminar mensajes no fijados publicados en canales de Discord automáticamente, o a petición de un moderador por comando.",
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "start": "node index.js"
   },
